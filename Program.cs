@@ -50,15 +50,14 @@ namespace AddressBookSystem
                     double phoneNo = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine("Please enter your email");
                     string email = Console.ReadLine();
-                    addressBook.AddDetailsOfPersons(firstName, lastName, address, city, state, zip, phoneNo, email);
-                    
+                    addressBook.AddDetailsOfPersons(firstName, lastName, address, city, state, zip, phoneNo, email);                   
                 }
                 /// calling function to display contact details
+                
                 addressBook.DisplayContactPersonDetails();            
-                Console.WriteLine("To delete Details enter 'Y' else enter 'N' ");
+                Console.WriteLine("To update Details enter 'Y' else enter 'N' ");
                 char updateCheck = Convert.ToChar(Console.ReadLine());
-                /// to call the update function in AddressBook if Y is entered
-                if (updateCheck == 'Y')
+                /// to call the update function in AddressBook if Y is entered              
                     if (updateCheck == 'Y')
                 {
                     Console.WriteLine("enter the first name & last name of the person to be updated");
@@ -76,13 +75,28 @@ namespace AddressBookSystem
                     string lName = Console.ReadLine();
                     addressBook.DeleteContactPersonDetails(fName, lName);
                 }
-                /// adding details in multiple address book using name enter and AddressBook instance created
+                /// adding details in multiple address book using name enter and AddressBook instance created             
                 multipleAddressBook.AddMultipleAddressBook(name, addressBook);
             }
             /// display multiple AddressBook using name of addressbook
-            Console.WriteLine("enter the name of Addressbook which you want to display:");
-            string nameCheck = Console.ReadLine();
-            multipleAddressBook.display(nameCheck);
+            Console.WriteLine("To display the contacts of addressbook press Y else N");
+            char addressBookCheck = Convert.ToChar(Console.ReadLine());
+            if(addressBookCheck=='Y')
+            {
+                multipleAddressBook.display();
+            }          
+            Console.WriteLine("Press Y to search by state");
+            char stateSearchCheck = Convert.ToChar(Console.ReadLine());
+            if(stateSearchCheck=='Y')
+            {
+                multipleAddressBook.SearchByState();
+            }
+            Console.WriteLine("Press Y to search by city");
+            char stateCityCheck = Convert.ToChar(Console.ReadLine());
+            if (stateCityCheck == 'Y')
+            {
+                multipleAddressBook.SearchByCity();
+            }
         }
     }
 }

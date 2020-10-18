@@ -17,7 +17,7 @@ namespace AddressBookSystem
         /// <summary>
         /// The address book dictionary to accepts Multiple Address Book
         /// </summary>
-        Dictionary<string, AddressBook> addressBookDictionary;
+        public Dictionary<string, AddressBook> addressBookDictionary;
         /// <summary>
         /// Initializes a new instance of the <see cref="MultipleAddressBook"/> class.
         /// Non Parameterised Constructor
@@ -26,24 +26,49 @@ namespace AddressBookSystem
         {
             addressBookDictionary = new Dictionary<string, AddressBook>();
         }
+        
 
         /// <summary>
         /// Adds the multiple address book using dictionary.
         /// </summary>      
-        public void AddMultipleAddressBook(string name, AddressBook addressBook)
+        public void AddMultipleAddressBook(string name, AddressBook addressB)
         {
-            addressBookDictionary.Add(name, addressBook);
+            addressBookDictionary.Add(name, addressB);          
         }
 
         /// <summary>
         /// Displays the specified address book using the name given for AddressBook
         /// </summary>
         /// <param name="name">The name.</param>
-        public void display(string name)
+        public void display()
         {
-            addressBookDictionary[name].DisplayContactPersonDetails();
-        }       
-          }
-
+            foreach(KeyValuePair<string, AddressBook> element in addressBookDictionary)
+            {
+                Console.WriteLine("The Name of the address book is : "+element.Key);
+                Console.WriteLine("The contact details are :");
+                element.Value.DisplayContactPersonDetails();
+            }
+            
+        }  
+        
+        public void SearchByState()
+        {
+            Console.WriteLine("enter state");
+            string searchState = Console.ReadLine();
+            foreach (KeyValuePair<string, AddressBook> element in addressBookDictionary)
+            {
+                element.Value.SearchingByState(searchState);
+            }
         }
+        public void SearchByCity()
+        {
+            Console.WriteLine("enter the city name");
+            string searchCity = Console.ReadLine();
+            foreach (KeyValuePair<string, AddressBook> element in addressBookDictionary)
+            {
+                element.Value.SearchingByCity(searchCity);
+            }
+        }
+    }
+}
     
