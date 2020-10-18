@@ -7,12 +7,14 @@
 ///// Including the requried assemblies in to the programusing System;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace AddressBookSystem
 {
-/// <summary>
-/// Creates an Addressbook 
-///Performs Operations like adding, displaying , updating , deleting details using a list 
-/// </summary>
+    /// <summary>
+    /// Creates an Addressbook 
+    ///Performs Operations like adding, displaying , updating , deleting details using a list 
+    /// </summary>
     public class AddressBook
     {
         /// <summary>
@@ -37,7 +39,17 @@ namespace AddressBookSystem
             /// Creates an instance of class Contact Person 
             /// For Adding the details in the list addressbooklist
             ContactPerson contactPerson = new ContactPerson(firstName, lastName, address, city, state, zip, phoneNo, eMail);
+            foreach (ContactPerson person in addressBookList)
+            {
+
+                if (person.firstName.Equals(firstName) && person.lastName.Equals(lastName))
+                {
+                    Console.WriteLine("Person with this full name already exists in the contact book");
+                    return;
+                }
+            }
             addressBookList.Add(contactPerson);
+            Console.WriteLine("detail succesfully added");
         }
 
         /// <summary>
@@ -62,7 +74,7 @@ namespace AddressBookSystem
         /// </summary>
         public void UpdateContactPersonDetails(string newFirstName, string newLastName)
         {
-           foreach (ContactPerson contactPerson in addressBookList)
+            foreach (ContactPerson contactPerson in addressBookList)
             {
                 ///checking if the  full name  in the list matches with the full name entered by the user 
                 if (newFirstName == contactPerson.firstName && newLastName == contactPerson.lastName)
@@ -97,7 +109,20 @@ namespace AddressBookSystem
                 }
             }
         }
+        public void SearchByState()
+        {
+            Console.WriteLine("enter state");
+            string searchState = Console.ReadLine();
+            foreach (ContactPerson contactPerson in addressBookList)
+            {
+                if (contactPerson.state == searchState)
+                {
+                    Console.WriteLine(contactPerson.firstName);
+                }
+            }
+        }
     }
 }
+
 
 
