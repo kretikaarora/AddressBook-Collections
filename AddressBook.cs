@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AddressBookSystem
 {
@@ -21,7 +22,8 @@ namespace AddressBookSystem
         /// The address book list for storing details
         /// </summary>
         private List<ContactPerson> addressBookList;
-
+        public List<ContactPerson> contactByStateList;
+        public Dictionary<string, List<ContactPerson>> dictionaryByState;
         /// <summary>
         /// Initializes a new instance of the <see cref="AddressBook"/> class.
         /// Non Parameterised Constructor for AddressBook
@@ -29,6 +31,8 @@ namespace AddressBookSystem
         public AddressBook()
         {
             addressBookList = new List<ContactPerson>();
+            contactByStateList = new List<ContactPerson>();
+            dictionaryByState = new Dictionary<string, List<ContactPerson>>();
         }
 
         /// <summary>
@@ -127,8 +131,25 @@ namespace AddressBookSystem
                 }               
             }
         }
+        public void ContactDetailsByState(string ContactsCitywise)
+        { 
+            foreach(ContactPerson contactPerson in addressBookList)
+            {
+                if(contactPerson.city==ContactsCitywise)
+                {
+                    contactByStateList.Add(contactPerson);
+                }
+            }
+          foreach(ContactPerson contact in contactByStateList)
+            {
+                Console.WriteLine("firstName : " + contact.firstName + "  last name  :" + contact.lastName + " address : " + contact.address + " city : " + contact.city + " state : " + contact.state + "  zip : " + contact.zip + " phone number : " + contact.phoneNo + "  email :" + contact.email);
+            }
+        }
+            
+        }
     }
- }
+
+ 
 
 
 

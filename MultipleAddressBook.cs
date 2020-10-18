@@ -69,6 +69,15 @@ namespace AddressBookSystem
                 element.Value.SearchingByCity(searchCity);
             }
         }
+        public void ContactDetailsByStateFunc()
+        {
+            Console.WriteLine("enter the name of the state for which contacts list is needed");
+            string ContactsCitywise = Console.ReadLine();
+            foreach (KeyValuePair<string, AddressBook> element in addressBookDictionary)
+            {
+                element.Value.ContactDetailsByState(ContactsCitywise);
+            }
+        }
     }
 }
     

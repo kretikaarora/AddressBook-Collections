@@ -6,6 +6,7 @@
 //
 /// Including the requried assemblies in to the program
 using System;
+using System.Collections.Generic;
 
 namespace AddressBookSystem
 {/// <summary>
@@ -18,6 +19,7 @@ namespace AddressBookSystem
             Console.WriteLine("Welcome to Multiple Address Book ");
             /// creating instance of Multiple Address Book
             MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
+        
             //Accepting details for name of addressbook and contact details in addressBook
             //While loop will break if the user enters empty string 
             while (true)
@@ -50,7 +52,7 @@ namespace AddressBookSystem
                     double phoneNo = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine("Please enter your email");
                     string email = Console.ReadLine();
-                    addressBook.AddDetailsOfPersons(firstName, lastName, address, city, state, zip, phoneNo, email);                   
+                    addressBook.AddDetailsOfPersons(firstName, lastName, address, city, state, zip, phoneNo, email);                  
                 }
                 /// calling function to display contact details
                 
@@ -91,11 +93,11 @@ namespace AddressBookSystem
             {
                 multipleAddressBook.SearchByState();
             }
-            Console.WriteLine("Press Y to search by city");
-            char stateCityCheck = Convert.ToChar(Console.ReadLine());
-            if (stateCityCheck == 'Y')
+            Console.WriteLine("Press Y to get contacts by city");
+            char cityCheck = Convert.ToChar(Console.ReadLine());
+            if (cityCheck == 'Y')
             {
-                multipleAddressBook.SearchByCity();
+                multipleAddressBook.ContactDetailsByStateFunc();
             }
         }
     }
