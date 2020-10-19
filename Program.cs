@@ -51,6 +51,7 @@ namespace AddressBookSystem
                     Console.WriteLine("Please enter your email");
                     string email = Console.ReadLine();
                     addressBook.AddDetailsOfPersons(firstName, lastName, address, city, state, zip, phoneNo, email);
+                    
                 }
                 /// calling function to display contact details
                 addressBook.DisplayContactPersonDetails();            

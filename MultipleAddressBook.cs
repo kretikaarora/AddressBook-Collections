@@ -5,6 +5,7 @@
 // <creator Name="Kretika Arora"/>
 //
 /// Including the requried assemblies in to the program
+using System;
 using System.Collections.Generic;
 
 namespace AddressBookSystem
@@ -41,6 +42,8 @@ namespace AddressBookSystem
         public void display(string name)
         {
             addressBookDictionary[name].DisplayContactPersonDetails();
+        }       
+          }
+
         }
-    }
-}
+    
