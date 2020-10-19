@@ -131,6 +131,7 @@ namespace AddressBookSystem
         }
         public void SearchingByState()
         {
+            int index = 0;
             Console.WriteLine("enter the name of state you wish to search");
             string searchState = Console.ReadLine();
             if (!Program.dictionaryByState.ContainsKey(searchState))
@@ -140,12 +141,15 @@ namespace AddressBookSystem
             }
             foreach (ContactPerson contactPerson in Program.dictionaryByState[searchState])
             {
+                index++;
                 Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
             }
+            Console.WriteLine("The count of {0} is {1}", searchState, index);
 
         }
         public void SearchingByCity()
         {
+            int index = 0;
             Console.WriteLine("enter the name of city you wish to search");
             string searchCity = Console.ReadLine();
             if (!Program.dictionaryByCity.ContainsKey(searchCity))
@@ -155,8 +159,10 @@ namespace AddressBookSystem
             }
             foreach(ContactPerson contactPerson in Program.dictionaryByCity[searchCity])
             {
+                index++;
                 Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
             }
+            Console.WriteLine("The count of {0} is {1}",searchCity,index);
 
         }
        
