@@ -71,8 +71,6 @@ namespace AddressBookSystem
                 list.Add(contactPerson);
                 Program.dictionaryByCity.Add(contactPerson.city, list);
             }
-
-
         }
 
         /// <summary>
@@ -131,6 +129,7 @@ namespace AddressBookSystem
                 }
             }
         }
+        
         /// <summary>
         /// Searching By State()
         /// </summary>
@@ -152,9 +151,9 @@ namespace AddressBookSystem
                 index++;
                 Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
             }
-            Console.WriteLine("The count of {0} is {1}", searchState, index);
-
+            Console.WriteLine("The count of {0} is {1}", searchState, index);           
         }
+        
         /// <summary>
         /// Searching by city
         /// </summary>
@@ -177,9 +176,7 @@ namespace AddressBookSystem
                 Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
             }
             Console.WriteLine("The count of {0} is {1}",searchCity,index);
-
-        }
-       
+        }       
     }
 }
 
