@@ -51,24 +51,25 @@ namespace AddressBookSystem
             
         }  
         
-        public void SearchByState()
-        {
-            Console.WriteLine("enter state");
-            string searchState = Console.ReadLine();
-            foreach (KeyValuePair<string, AddressBook> element in addressBookDictionary)
-            {
-                element.Value.SearchingByState(searchState);
-            }
-        }
-        public void SearchByCity()
-        {
-            Console.WriteLine("enter the city name");
-            string searchCity = Console.ReadLine();
-            foreach (KeyValuePair<string, AddressBook> element in addressBookDictionary)
-            {
-                element.Value.SearchingByCity(searchCity);
-            }
-        }
+        //public void SearchByState()
+        //{
+        //    Console.WriteLine("enter state");
+        //    string searchState = Console.ReadLine();
+        //    foreach (KeyValuePair<string, AddressBook> element in addressBookDictionary)
+        //    {
+        //        element.Value.SearchingByState(searchState);
+        //    }
+        //}
+        //public void SearchByCity()
+        //{
+        //    Console.WriteLine("enter the city name");
+        //    string searchCity = Console.ReadLine();
+        //    foreach (KeyValuePair<string, AddressBook> element in addressBookDictionary)
+        //    {
+        //        element.Value.SearchingByCity(searchCity);
+        //    }
+        //}
+
     }
 }
     

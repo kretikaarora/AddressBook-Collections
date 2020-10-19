@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AddressBookSystem
 {
@@ -20,15 +21,14 @@ namespace AddressBookSystem
         /// <summary>
         /// The address book list for storing details
         /// </summary>
-        private List<ContactPerson> addressBookList;
-
+        private List<ContactPerson> addressBookList; 
         /// <summary>
         /// Initializes a new instance of the <see cref="AddressBook"/> class.
         /// Non Parameterised Constructor for AddressBook
         /// </summary>
         public AddressBook()
         {
-            addressBookList = new List<ContactPerson>();
+            addressBookList = new List<ContactPerson>();           
         }
 
         /// <summary>
@@ -49,6 +49,28 @@ namespace AddressBookSystem
          }
             addressBookList.Add(contactPerson);
             Console.WriteLine("detail succesfully added");
+            if(Program.dictionaryByState.ContainsKey(contactPerson.state))
+            {
+                Program.dictionaryByState[contactPerson.state].Add(contactPerson);
+            }
+            else
+            {
+                List<ContactPerson> list = new List<ContactPerson>();
+                list.Add(contactPerson);
+                Program.dictionaryByState.Add(contactPerson.state, list);
+            }
+            if (Program.dictionaryByCity.ContainsKey(contactPerson.city))
+            {
+                Program.dictionaryByCity[contactPerson.city].Add(contactPerson);
+            }
+            else
+            {
+                List<ContactPerson> list = new List<ContactPerson>();
+                list.Add(contactPerson);
+                Program.dictionaryByCity.Add(contactPerson.city, list);
+            }
+
+
         }
 
         /// <summary>
@@ -107,28 +129,41 @@ namespace AddressBookSystem
                 }
             }
         }
-        public void SearchingByState(string searchState)
-        {           
-            foreach (ContactPerson contactPerson in addressBookList)
-            {
-                if (contactPerson.state.Equals(searchState))
-                {
-                    Console.WriteLine(contactPerson.firstName+" "+contactPerson.lastName);                 
-                }              
-            }
-        }
-        public void SearchingByCity(string searchCity)
+        public void SearchingByState()
         {
-            foreach (ContactPerson contactPerson in addressBookList)
+            Console.WriteLine("enter the name of state you wish to search");
+            string searchState = Console.ReadLine();
+            if (!Program.dictionaryByState.ContainsKey(searchState))
             {
-                if (contactPerson.city.Equals(searchCity))
-                {
-                    Console.WriteLine(contactPerson.firstName + " " + contactPerson.lastName);
-                }               
+                Console.WriteLine("no such state records found");
+                return;
             }
+            foreach (ContactPerson contactPerson in Program.dictionaryByState[searchState])
+            {
+                Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
+            }
+
         }
+        public void SearchingByCity()
+        {
+            Console.WriteLine("enter the name of city you wish to search");
+            string searchCity = Console.ReadLine();
+            if (!Program.dictionaryByCity.ContainsKey(searchCity))
+            {
+                Console.WriteLine("no such city records found");
+                return;
+            }
+            foreach(ContactPerson contactPerson in Program.dictionaryByCity[searchCity])
+            {
+                Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
+            }
+
+        }
+       
     }
- }
+}
+
+ 
 
 
 
