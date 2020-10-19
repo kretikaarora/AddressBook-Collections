@@ -14,6 +14,10 @@ namespace AddressBookSystem
 /// </summary>
     class Program
     {
+       
+        public static Dictionary<string, List<ContactPerson>> dictionaryByState = new Dictionary<string, List<ContactPerson>>();
+
+        public static Dictionary<string, List<ContactPerson>> dictionaryByCity = new Dictionary<string, List<ContactPerson>>();
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Multiple Address Book ");
@@ -97,7 +101,7 @@ namespace AddressBookSystem
             char cityCheck = Convert.ToChar(Console.ReadLine());
             if (cityCheck == 'Y')
             {
-                multipleAddressBook.ContactDetailsByStateFunc();
+                multipleAddressBook.SearchByCity();
             }
         }
     }

@@ -21,18 +21,14 @@ namespace AddressBookSystem
         /// <summary>
         /// The address book list for storing details
         /// </summary>
-        private List<ContactPerson> addressBookList;
-        public List<ContactPerson> contactByStateList;
-        public Dictionary<string, List<ContactPerson>> dictionaryByState;
+        private List<ContactPerson> addressBookList; 
         /// <summary>
         /// Initializes a new instance of the <see cref="AddressBook"/> class.
         /// Non Parameterised Constructor for AddressBook
         /// </summary>
         public AddressBook()
         {
-            addressBookList = new List<ContactPerson>();
-            contactByStateList = new List<ContactPerson>();
-            dictionaryByState = new Dictionary<string, List<ContactPerson>>();
+            addressBookList = new List<ContactPerson>();           
         }
 
         /// <summary>
@@ -53,6 +49,28 @@ namespace AddressBookSystem
          }
             addressBookList.Add(contactPerson);
             Console.WriteLine("detail succesfully added");
+            if(Program.dictionaryByState.ContainsKey(contactPerson.state))
+            {
+                Program.dictionaryByState[contactPerson.state].Add(contactPerson);
+            }
+            else
+            {
+                List<ContactPerson> list = new List<ContactPerson>();
+                list.Add(contactPerson);
+                Program.dictionaryByState.Add(contactPerson.state, list);
+            }
+            if (Program.dictionaryByCity.ContainsKey(contactPerson.city))
+            {
+                Program.dictionaryByState[contactPerson.city].Add(contactPerson);
+            }
+            else
+            {
+                List<ContactPerson> list = new List<ContactPerson>();
+                list.Add(contactPerson);
+                Program.dictionaryByState.Add(contactPerson.city, list);
+            }
+
+
         }
 
         /// <summary>
@@ -117,7 +135,7 @@ namespace AddressBookSystem
             {
                 if (contactPerson.state.Equals(searchState))
                 {
-                    Console.WriteLine(contactPerson.firstName+" "+contactPerson.lastName);                 
+                    Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
                 }              
             }
         }
@@ -127,27 +145,13 @@ namespace AddressBookSystem
             {
                 if (contactPerson.city.Equals(searchCity))
                 {
-                    Console.WriteLine(contactPerson.firstName + " " + contactPerson.lastName);
+                    Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
                 }               
             }
         }
-        public void ContactDetailsByState(string ContactsCitywise)
-        { 
-            foreach(ContactPerson contactPerson in addressBookList)
-            {
-                if(contactPerson.city==ContactsCitywise)
-                {
-                    contactByStateList.Add(contactPerson);
-                }
-            }
-          foreach(ContactPerson contact in contactByStateList)
-            {
-                Console.WriteLine("firstName : " + contact.firstName + "  last name  :" + contact.lastName + " address : " + contact.address + " city : " + contact.city + " state : " + contact.state + "  zip : " + contact.zip + " phone number : " + contact.phoneNo + "  email :" + contact.email);
-            }
-        }
-            
-        }
+       
     }
+}
 
  
 
