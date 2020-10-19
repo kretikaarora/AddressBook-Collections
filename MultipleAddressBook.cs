@@ -9,9 +9,10 @@ using System;
 using System.Collections.Generic;
 
 namespace AddressBookSystem
-{/// <summary>
-/// Creates a Multiple AddressBook
-/// </summary>
+{
+    /// <summary>
+    /// Creates a Multiple AddressBook
+    /// </summary>
     public class MultipleAddressBook
     {
         /// <summary>
@@ -27,7 +28,6 @@ namespace AddressBookSystem
             addressBookDictionary = new Dictionary<string, AddressBook>();
         }
         
-
         /// <summary>
         /// Adds the multiple address book using dictionary.
         /// </summary>      
@@ -47,10 +47,8 @@ namespace AddressBookSystem
                 Console.WriteLine("The Name of the address book is : "+element.Key);
                 Console.WriteLine("The contact details are :");
                 element.Value.DisplayContactPersonDetails();
-            }
-            
+            }            
         }     
-
     }
 }
     
