@@ -14,9 +14,8 @@ namespace AddressBookSystem
 /// </summary>
     class Program
     {
-       
+       ///Added Dictionary to store Contacts By state and city
         public static Dictionary<string, List<ContactPerson>> dictionaryByState = new Dictionary<string, List<ContactPerson>>();
-
         public static Dictionary<string, List<ContactPerson>> dictionaryByCity = new Dictionary<string, List<ContactPerson>>();
         static void Main(string[] args)
         {
