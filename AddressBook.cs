@@ -46,7 +46,7 @@ namespace AddressBookSystem
                     Console.WriteLine("Person with this full name already exists in the contact book");
                     return;
                 }
-         }
+            }
             addressBookList.Add(contactPerson);
             Console.WriteLine("detail succesfully added");
             ///Adding details into dictionaryByState with state as key
