@@ -49,6 +49,7 @@ namespace AddressBookSystem
          }
             addressBookList.Add(contactPerson);
             Console.WriteLine("detail succesfully added");
+            ///Adding details into dictionaryByState with state as key
             if(Program.dictionaryByState.ContainsKey(contactPerson.state))
             {
                 Program.dictionaryByState[contactPerson.state].Add(contactPerson);
@@ -59,6 +60,7 @@ namespace AddressBookSystem
                 list.Add(contactPerson);
                 Program.dictionaryByState.Add(contactPerson.state, list);
             }
+            ///Adding details into dictionaryByCity with city as key
             if (Program.dictionaryByCity.ContainsKey(contactPerson.city))
             {
                 Program.dictionaryByCity[contactPerson.city].Add(contactPerson);
@@ -129,11 +131,17 @@ namespace AddressBookSystem
                 }
             }
         }
+        /// <summary>
+        /// Searching By State()
+        /// </summary>
         public void SearchingByState()
         {
+            ///index used for checking count for a state searched
             int index = 0;
             Console.WriteLine("enter the name of state you wish to search");
             string searchState = Console.ReadLine();
+            /// if searchState is not present in the dictionary as key then new list is created and added
+            /// otherwise added in the same list 
             if (!Program.dictionaryByState.ContainsKey(searchState))
             {
                 Console.WriteLine("no such state records found");
@@ -147,11 +155,17 @@ namespace AddressBookSystem
             Console.WriteLine("The count of {0} is {1}", searchState, index);
 
         }
+        /// <summary>
+        /// Searching by city
+        /// </summary>
         public void SearchingByCity()
         {
+            ///index used for checking count for a city searched
             int index = 0;
             Console.WriteLine("enter the name of city you wish to search");
             string searchCity = Console.ReadLine();
+            /// if searchCity is not present in the dictionary as key then new list is created and added
+            /// otherwise added in the same list 
             if (!Program.dictionaryByCity.ContainsKey(searchCity))
             {
                 Console.WriteLine("no such city records found");
