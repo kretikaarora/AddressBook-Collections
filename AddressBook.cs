@@ -41,13 +41,12 @@ namespace AddressBookSystem
             ContactPerson contactPerson = new ContactPerson(firstName, lastName, address, city, state, zip, phoneNo, eMail);
             foreach (ContactPerson person in addressBookList)
             {
-
                 if (person.firstName.Equals(firstName) && person.lastName.Equals(lastName))
                 {
                     Console.WriteLine("Person with this full name already exists in the contact book");
                     return;
                 }
-            }
+         }
             addressBookList.Add(contactPerson);
             Console.WriteLine("detail succesfully added");
         }
@@ -64,8 +63,7 @@ namespace AddressBookSystem
             {
                 Console.WriteLine("The Details of Contact Number {0} -", numberOfPersons);
                 Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
-                numberOfPersons++;
-                Console.WriteLine(" ");
+                numberOfPersons++;              
             }
         }
 
@@ -109,20 +107,29 @@ namespace AddressBookSystem
                 }
             }
         }
-        public void SearchByState()
-        {
-            Console.WriteLine("enter state");
-            string searchState = Console.ReadLine();
+        public void SearchingByState(string searchState)
+        {           
             foreach (ContactPerson contactPerson in addressBookList)
             {
-                if (contactPerson.state == searchState)
+                if (contactPerson.state.Equals(searchState))
                 {
-                    Console.WriteLine(contactPerson.firstName);
-                }
+                    Console.WriteLine(contactPerson.firstName+" "+contactPerson.lastName);                 
+                }              
+            }
+        }
+        public void SearchingByCity(string searchCity)
+        {
+            foreach (ContactPerson contactPerson in addressBookList)
+            {
+                if (contactPerson.city.Equals(searchCity))
+                {
+                    Console.WriteLine(contactPerson.firstName + " " + contactPerson.lastName);
+                }               
             }
         }
     }
-}
+ }
+
 
 
 
