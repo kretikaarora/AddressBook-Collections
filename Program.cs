@@ -23,7 +23,8 @@ namespace AddressBookSystem
             Console.WriteLine("Welcome to Multiple Address Book ");
             /// creating instance of Multiple Address Book
             MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
-        
+            AddressBook addressBook1 = new AddressBook();
+
             //Accepting details for name of addressbook and contact details in addressBook
             //While loop will break if the user enters empty string 
             while (true)
@@ -95,13 +96,13 @@ namespace AddressBookSystem
             char stateSearchCheck = Convert.ToChar(Console.ReadLine());
             if(stateSearchCheck=='Y')
             {
-                multipleAddressBook.SearchByState();
+                addressBook1.SearchingByState();
             }
             Console.WriteLine("Press Y to get contacts by city");
             char cityCheck = Convert.ToChar(Console.ReadLine());
             if (cityCheck == 'Y')
             {
-                multipleAddressBook.SearchByCity();
+                addressBook1.SearchingByCity();
             }
         }
     }

@@ -61,13 +61,13 @@ namespace AddressBookSystem
             }
             if (Program.dictionaryByCity.ContainsKey(contactPerson.city))
             {
-                Program.dictionaryByState[contactPerson.city].Add(contactPerson);
+                Program.dictionaryByCity[contactPerson.city].Add(contactPerson);
             }
             else
             {
                 List<ContactPerson> list = new List<ContactPerson>();
                 list.Add(contactPerson);
-                Program.dictionaryByState.Add(contactPerson.city, list);
+                Program.dictionaryByCity.Add(contactPerson.city, list);
             }
 
 
@@ -129,25 +129,35 @@ namespace AddressBookSystem
                 }
             }
         }
-        public void SearchingByState(string searchState)
-        {           
-            foreach (ContactPerson contactPerson in addressBookList)
-            {
-                if (contactPerson.state.Equals(searchState))
-                {
-                    Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
-                }              
-            }
-        }
-        public void SearchingByCity(string searchCity)
+        public void SearchingByState()
         {
-            foreach (ContactPerson contactPerson in addressBookList)
+            Console.WriteLine("enter the name of state you wish to search");
+            string searchState = Console.ReadLine();
+            if (!Program.dictionaryByState.ContainsKey(searchState))
             {
-                if (contactPerson.city.Equals(searchCity))
-                {
-                    Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
-                }               
+                Console.WriteLine("no such state records found");
+                return;
             }
+            foreach (ContactPerson contactPerson in Program.dictionaryByState[searchState])
+            {
+                Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
+            }
+
+        }
+        public void SearchingByCity()
+        {
+            Console.WriteLine("enter the name of city you wish to search");
+            string searchCity = Console.ReadLine();
+            if (!Program.dictionaryByCity.ContainsKey(searchCity))
+            {
+                Console.WriteLine("no such city records found");
+                return;
+            }
+            foreach(ContactPerson contactPerson in Program.dictionaryByCity[searchCity])
+            {
+                Console.WriteLine("firstName : " + contactPerson.firstName + "  last name  :" + contactPerson.lastName + " address : " + contactPerson.address + " city : " + contactPerson.city + " state : " + contactPerson.state + "  zip : " + contactPerson.zip + " phone number : " + contactPerson.phoneNo + "  email :" + contactPerson.email);
+            }
+
         }
        
     }
